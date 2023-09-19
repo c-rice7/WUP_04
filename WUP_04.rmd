@@ -44,6 +44,8 @@ basicCN <- ggplot(gssdata,aes(x=DEGREE,y=WORDSUM))
 basicCN + geom_boxplot()
 ```
 
+The plot indicates that there is a notable difference in wordsum scores between those who are high school educated and all those groups who are college educated. There is no notable difference in wordsum scores between those who are junior college educated and those with their bachelors degree. There is also a substantial gap between those who have their graduate degrees, with the graduate degree groups 50th percentile is above the median for every other group.
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
@@ -62,7 +64,7 @@ summary.aov(model1)
 ```
 
 ```{r}
-plot(TukeyHSD(model1),las=2)
+plot(TukeyHSD(model1, conf.level = 0.98),las=2)
 ```
 
 # Discussion and Conclusion
