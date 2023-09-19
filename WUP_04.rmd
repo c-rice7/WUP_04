@@ -54,7 +54,7 @@ The plot indicates that there is a notable difference in wordsum scores between 
 favstats(WORDSUM~DEGREE,data=gssdata)
 ```
 
-
+There is a general trend in the means of the different groups that moves upwards as the level of education increases. Those who are junior college educated fall outside of this trend with a mean wordsum score that lies far above what could be expected from the general trend in means.
 
 ## Inferential Results
 
