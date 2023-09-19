@@ -26,7 +26,7 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 
 <!--Mention that you intend to use chatGPT to the greatest extent possible. Give credit to chatGPT when you use it to create code in your report. Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-ChatGPT will be used for most of the construction of the code-blocks that analyze the data in this report, including both the descriptive and inferential results. 
+ChatGPT will be used for most of the construction of the code-blocks that analyze the data in this report, including both the descriptive and inferential results to examine if WORDSUM score is affected by education level. 
 
 # Results
 
@@ -54,6 +54,8 @@ The plot indicates that there is a notable difference in wordsum scores between 
 favstats(WORDSUM~DEGREE,data=gssdata)
 ```
 
+There is a general trend in the means of the different groups that moves upwards as the level of education increases. Those who are junior college educated fall outside of this trend with a mean wordsum score that lies far above what could be expected from the general trend in means.
+
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
@@ -63,9 +65,13 @@ model1 <- aov(WORDSUM~DEGREE,data=gssdata)
 summary.aov(model1)
 ```
 
+The very small p-value of 0.00236 indicates there is a statistically significant difference in wordsum scores depending on educational level.
+
 ```{r}
-plot(TukeyHSD(model1, conf.level = 0.98),las=2)
+plot(TukeyHSD(model1, conf.level = 0.98),las=2, cex.axis = 0.3)
 ```
+
+The specific differences between the different groups are less drastic than the p value indicates. The majority of the comparisons between the groups have 0 within their 98% confidence interval indicating little to no significant difference in their wordsum scores. However the comparisons  between LT high school and those with graduate degrees and the comparison  between those with highschool education and those with graduates degrees are likely significant since their 98% confidence intervals do not include 0.
 
 # Discussion and Conclusion
 
